@@ -1,0 +1,8 @@
+<?php
+
+// Mobile Chrome Browser Colour Branding with  DNS Prefetching
+
+function technumero_dns_prefetch() {
+echo '<meta name="theme-color" content="#ff6600" >';
+}
+add_action('wp_head', 'technumero_dns_prefetch', 0);
