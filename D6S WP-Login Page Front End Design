@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * WP-Login Page Front End Design Customisations // 
+ * */
+
+
+
+function wpdocs_my_custom_login_logo() {
+    echo '<style type="text/css">
+	h1 a { background-image: url(https://www.digital6s.com.au/wp-content/uploads/d6s-logo14400.png) !important; margin: 0 auto; }
+	</style>';
+}
+add_filter( 'login_head', 'wpdocs_my_custom_login_logo' );
+
+//Custom logo link URL 
+function custom_login_logo_url() {
+    return 'https://www.digital6s.com.au/'; // Replace this with your desired URL
+}
+add_filter( 'login_headerurl', 'custom_login_logo_url' );
+
+
+//Custom Browser Page Tab Title 
+
+function custom_login_title() {
+    return 'Log In to Digital 6s'; // Replace this with your desired Title 
+}
+add_filter( 'login_title', 'custom_login_title' );
+
+
+//Custom Page CSS Applied to log in Page. 
+
+add_action( 'login_enqueue_scripts', 'custom_login_styles' );
+function custom_login_styles() {
+    echo '<style>   
+        body.login {
+            background-color: #fff;
+        }
+        .login form {
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+        
+        input#wp-submit{
+            background: #342354;
+            border-color: #342354;
+        }
+        input#rememberme:focus,
+        input#user_pass:focus,
+        input#user_login:focus{
+            border-color:  #342354;
+            box-shadow: 0 0 0 1px  #342354;
+        }
+        
+        a.privacy-policy-link{
+            color: #342354;
+           font-weight: 700;
+           font-size: 1.5em;
+           text-decoration: none;
+        }
+        .login h1 a{
+            background-size: 200px!important;
+            height: 200px!important;
+            width: 200px!important;
+        }
+    </style>';
+}
